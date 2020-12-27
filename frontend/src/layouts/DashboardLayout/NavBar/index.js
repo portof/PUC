@@ -112,15 +112,6 @@ const NavBar = ({ onMobileClose, openMobile, logout }) => {
   const USER = JSON.parse(localStorage.getItem("@DataVie-User"));
   
 
-
-  const intro = {
-    avatar: '/static/images/avatars/avatar.png',
-    jobTitle: (USER.funcao === 'A' ? 'Administrador(a)' : (USER.funcao === 'E' ? 'Especialista' : 'Cliente')),
-    name: USER.nome
-  }; 
-
-
-
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
@@ -143,7 +134,7 @@ const NavBar = ({ onMobileClose, openMobile, logout }) => {
         <Avatar
           className={classes.avatar}
           component={RouterLink}
-          src={intro.avatar}
+          src={'/static/images/avatars/avatar.png'}
           to="/"
         />
         <Typography
@@ -151,13 +142,13 @@ const NavBar = ({ onMobileClose, openMobile, logout }) => {
           color="textPrimary"
           variant="h5"
         >
-          {intro.name}
+          {USER.nome}
         </Typography>
         <Typography
           color="textSecondary"
           variant="body2"
         >
-          {intro.name ==='teste'? 'Teste' : intro.jobTitle}
+          {USER.funcao === 'A' ? 'Administrador(a)' : (USER.funcao === 'E' ? 'Especialista' : 'Cliente')}
         </Typography>
       </Box>
      

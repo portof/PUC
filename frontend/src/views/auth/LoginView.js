@@ -66,6 +66,7 @@ const LoginView = () => {
   async function validarAcesso(user, senha){
     if(user === 'teste'){
       localStorage.setItem("@DataVie-User", JSON.stringify({'nome': 'teste', 'funcao': 'teste'}));
+
       navigate('/dashboard', { replace: true });
 
     }else{
@@ -84,7 +85,7 @@ const LoginView = () => {
         if(!response.data.token){
           NotificationManager.error(response.data.message, 'Algo deu errado!', 4000);
         }else{
-          NotificationManager.success(`Bem vindo, ${response.data.nome}.`, 'Login autorizado!', 2000);
+          NotificationManager.success(`Bem vindo, ${response.data.pessoa.nome}.`, 'Login autorizado!', 2000);
   
           localStorage.setItem("@DataVie-Token", response.data.token);
           localStorage.setItem("@DataVie-User", JSON.stringify(response.data.pessoa));
