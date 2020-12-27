@@ -14,10 +14,16 @@ import TipoLocalRegister from 'src/views/locais/TipoLocalRegister';
 
 const routes = [
   {
+    path: '',
+    element: <MainLayout />,
+    children: [
+      { path: '', element: <Navigate to="/login" /> },
+    ]
+  },
+  {
     path: '/',
     element: <DashboardLayout />,
     children: [
-      { path: '/', element: <Navigate to="/login" /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'locais', element: <LocaisView /> },
       { path: 'locais-register', element: <LocaisRegister /> },
@@ -37,7 +43,7 @@ const routes = [
       { path: '/', element: <Navigate to="/login" /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
-  }
+  },
 ];
 
 export default routes;
