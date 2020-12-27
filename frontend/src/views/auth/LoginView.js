@@ -65,7 +65,7 @@ const LoginView = () => {
 
   async function validarAcesso(user, senha){
     if(user === 'teste'){
-      localStorage.setItem("@DataVie-User", JSON.stringify({'nome': 'teste', 'funcao': 'teste'}));
+      localStorage.setItem("@DataVie-User", JSON.stringify({'nome': 'teste'}));
 
       navigate('/dashboard', { replace: true });
 
@@ -209,19 +209,28 @@ const LoginView = () => {
               md={6}
               xs={12}
             >
-              <Link
-                component="button"
-                style={{marginTop: 20}}
-              >
-                Esqueci minha senha
-              </Link>
+              <Box 
+                p={1} 
+                display="flex" 
+                flexDirection="column" 
+              > 
+                <Link
+                  component="button"
+                  style={{marginTop: 20}}
+                >
+                  Esqueci minha senha
+                </Link>
+                
+                <Link
+                  component="button"
+                  style={{marginTop: 20}}
+                >
+                  Não possuo cadastro
+                </Link>
+              </Box>
             </Grid>
-            <Link
-              component="button"
-              style={{marginTop: 20}}
-            >
-              Não possuo cadastro
-            </Link>
+
+
           </Grid>
         </ValidatorForm>
         <Divider style={{marginTop: 20}}/>

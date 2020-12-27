@@ -110,6 +110,7 @@ const NavBar = ({ onMobileClose, openMobile, logout }) => {
   const classes = useStyles();
   const location = useLocation();
   const USER = JSON.parse(localStorage.getItem("@DataVie-User"));
+
   
 
   useEffect(() => {
@@ -131,6 +132,7 @@ const NavBar = ({ onMobileClose, openMobile, logout }) => {
         flexDirection="column"
         p={2}
       >
+        
         <Avatar
           className={classes.avatar}
           component={RouterLink}
@@ -148,11 +150,15 @@ const NavBar = ({ onMobileClose, openMobile, logout }) => {
           color="textSecondary"
           variant="body2"
         >
-          {USER.funcao === 'A' ? 'Administrador(a)' : (USER.funcao === 'E' ? 'Especialista' : 'Cliente')}
+          {!USER.funcao ? 'Teste': (USER.funcao === 'A' ? 'Administrador(a)' : (USER.funcao === 'E' ? 'Especialista' : 'Cliente'))}
         </Typography>
       </Box>
      
-      <Box p={2}>
+      <Box 
+        p={2} 
+        display="flex" 
+        flexDirection="column" 
+      > 
         <Divider />
         <List>
           {itens.map((item) => (
