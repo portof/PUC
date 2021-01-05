@@ -38,7 +38,7 @@ const AtendimentosSemanais = ({ className, ...rest }) => {
         label: 'Semana anterior'
       }
     ],
-    labels: ['1 Set', '2 Set', '3 Set', '4 Set', '5 Set', '6 Set']
+    labels: ['1 Set', '2 Set', '3 Set', '4 Set', '5 Set', '6 Set', '7 Set']
   };
 
   const options = {
@@ -51,10 +51,10 @@ const AtendimentosSemanais = ({ className, ...rest }) => {
     scales: {
       xAxes: [
         {
-          barThickness: 12,
-          maxBarThickness: 10,
-          barPercentage: 0.5,
-          categoryPercentage: 0.5,
+          barThickness: data.datasets.barThickness,
+          maxBarThickness: data.datasets.maxBarThickness,
+          barPercentage: data.datasets.barPercentage,
+          categoryPercentage: data.datasets.categoryPercentage,
           ticks: {
             fontColor: theme.palette.text.secondary
           },

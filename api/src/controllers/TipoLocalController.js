@@ -34,7 +34,7 @@ module.exports = {
         const { descricao, farmacia } = req.body;
         
         try {
-            const exists = await TipoLocal.findOne({ where: { farmacia: true, data_del: null } });
+            const exists = await TipoLocal.findOne({ where: { farmacia: true, data_del: null } });            
             
             if(!descricao){
                 return res.json({
@@ -43,7 +43,7 @@ module.exports = {
                 
                 });
             }
-            else if(farmacia == true && exists != null){
+            else if(exists && farmacia === true){
                 return res.json({
                     "message": "Tipo Farmácia já cadastrado.",
                     "farmacia": true,

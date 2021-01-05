@@ -64,34 +64,28 @@ const LoginView = () => {
   }
 
   async function validarAcesso(user, senha){
-    if(user === 'teste'){
-      localStorage.setItem("@DataVie-User", JSON.stringify({'nome': 'teste'}));
 
-      navigate('/dashboard', { replace: true });
+    if(!user || !senha){
+      NotificationManager.error('Preencher login e senha para entrar.', 'Algo deu errado!', 4000);
+    }
+    else{
+      const response = await api.post('/login', login, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(login)
+      } );  
 
-    }else{
-      if(!user || !senha){
-        NotificationManager.error('Preencher login e senha para entrar.', 'Algo deu errado!', 4000);
-      }
-      else{
-        const response = await api.post('/login', login, {
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(login)
-        } );  
-  
-        if(!response.data.token){
-          NotificationManager.error(response.data.message, 'Algo deu errado!', 4000);
-        }else{
-          NotificationManager.success(`Bem vindo, ${response.data.pessoa.nome}.`, 'Login autorizado!', 2000);
-  
-          localStorage.setItem("@DataVie-Token", response.data.token);
-          localStorage.setItem("@DataVie-User", JSON.stringify(response.data.pessoa));
-  
-          navigate('/dashboard', { replace: true });
-        }
+      if(!response.data.token){
+        NotificationManager.error(response.data.message, 'Algo deu errado!', 4000);
+      }else{
+        NotificationManager.success(`Bem vindo, ${response.data.pessoa.nome}.`, 'Login autorizado!', 2000);
+
+        localStorage.setItem("@DataVie-Token", response.data.token);
+        localStorage.setItem("@DataVie-User", JSON.stringify(response.data.pessoa));
+
+        navigate('/dashboard', { replace: true });
       }
     }
   }

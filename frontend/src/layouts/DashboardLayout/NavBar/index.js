@@ -150,7 +150,7 @@ const NavBar = ({ onMobileClose, openMobile, logout }) => {
           color="textSecondary"
           variant="body2"
         >
-          {!USER.funcao ? 'Teste': (USER.funcao === 'A' ? 'Administrador(a)' : (USER.funcao === 'E' ? 'Especialista' : 'Cliente'))}
+          {USER.funcao === 'A' ? 'Administrador(a)' : (USER.funcao === 'E' ? 'Especialista' : 'Cliente')}
         </Typography>
       </Box>
      
