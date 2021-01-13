@@ -14,6 +14,7 @@ import InputMask from 'react-input-mask';
 import api from '../../../services/Api';
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
@@ -476,14 +477,10 @@ const Register = ( props ) => {
                 name="telefone"
                 onBlur={inputProps.onBlur}
                 onChange={inputProps.onChange}
-                variant="outlined"
-                
-                
+                variant="outlined"                
               /> 
                 }
                 </InputMask>
-
-
 
             </Grid>
             <Grid

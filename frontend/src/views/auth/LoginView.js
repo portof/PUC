@@ -14,6 +14,7 @@ import {
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import { NotificationManager } from 'react-notifications';
 import api from '../../../src/services/Api';
+import '../../../src/utils/removeArrows.css';
 
 
 import Page from 'src/components/Page';
@@ -23,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.dark,
     height: '100%',
     paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(8)
+    paddingTop: theme.spacing(8),
+    
   },
   card:{
     paddingTop: theme.spacing(3),
@@ -33,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
   
   paper:{
     minWidth: '70%'
-  }
+  },
+  
 }));
 
 
@@ -49,6 +52,7 @@ const LoginView = () => {
     
     switch (order) {
       case 1:
+        
         login.user = value;
         setLogin(login);
         setUser(value);
@@ -147,6 +151,7 @@ const LoginView = () => {
                 name="user"
                 variant="outlined"
                 onChange={e => modificarValores(1, e.target.value)}
+                type="number"
               />
             </Grid>
           </Grid>

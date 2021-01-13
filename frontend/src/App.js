@@ -7,8 +7,8 @@ import 'src/mixins/chartjs';
 import theme from 'src/theme';
 import routes from 'src/routes';
 
-import 'react-notifications/lib/notifications.css';
 import { NotificationContainer } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const App = () => {
   const routing = useRoutes(routes);

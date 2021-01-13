@@ -12,6 +12,7 @@ import Toolbar from './Toolbar';
 
 import api from '../../../services/Api';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LocaisRegister = () => {
-  const [local, setLocal] = useState({});
+  const [local, setLocal] = useState([]);
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -66,6 +67,7 @@ const LocaisRegister = () => {
         setCidade(response.data[0].cidade);
         setTelefone(response.data[0].telefone);
         setTipoLocal(response.data[0].id_tipo_local);
+        
       }else{       
         setLocal(local);
         setBotao('Salvar');

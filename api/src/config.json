@@ -6,6 +6,6 @@
         "schema": "public",
         "database": "DataVie_Flavio",
         "username": "postgres",
-        "password": "bravilpostgres1877"
+        "password": "bravilpostgres1877" 
     }
 }
