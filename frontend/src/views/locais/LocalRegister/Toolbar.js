@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
@@ -41,9 +40,9 @@ const Toolbar = ( props ) => {
     atualizarLocal,
     id,
     botao, 
+    verificarAtt,
     ...rest } = props;
   const classes = useStyles();
-  const navigate = useNavigate();
 
   return (
     <div
@@ -79,7 +78,7 @@ const Toolbar = ( props ) => {
         
             <Button
             variant="contained"
-            onClick={(() => {navigate('/locais', { replace: true })})}
+            onClick={() => verificarAtt()}
             style={{
                 marginRight: '10px',
                 color: 'white',

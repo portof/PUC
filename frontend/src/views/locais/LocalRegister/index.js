@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   Box,
+  Button,
   Container,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
   makeStyles
 } from '@material-ui/core';
 import { NotificationManager } from 'react-notifications';
@@ -46,6 +52,7 @@ const LocaisRegister = () => {
   const [tipos, setTipos] = React.useState([]);
   const [vazio, setVazio] = React.useState(true);
   const [botao, setBotao] = useState('');
+  const [open, setOpen] = React.useState(false);
   const TOKEN = localStorage.getItem("@DataVie-Token");
   
   useEffect(() => {
@@ -81,7 +88,6 @@ const LocaisRegister = () => {
   async function cadastrarLocal(){
 
     try{
-      
       const response = await api.post('/local', local, {
         headers: {
           'Accept': 'application/json',
@@ -158,7 +164,18 @@ const LocaisRegister = () => {
     }
   };
 
+  const handleClose = () => { setOpen(false); };
 
+  function verificarAtt(){
+
+    if(nome || cnpj || admin || nomeDetalhado || logradouro || numero || complemento || bairro || cep || cidade || uf || telefone || tipoLocal){
+      setOpen(true);
+
+    }else{
+      navigate('/locais', { replace: true }); 
+
+    }
+  }
 
   return (
     <Page
@@ -171,7 +188,36 @@ const LocaisRegister = () => {
           atualizarLocal={atualizarLocal}
           id={id}
           botao={botao}
+          verificarAtt={verificarAtt}
         />
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">{`Deseja cancelar operação?`}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Após a confirmação esse processo não poderá ser desfeito.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button 
+                color="primary"
+                onClick={handleClose} 
+              >
+                Voltar
+              </Button>
+              <Button 
+                autoFocus
+                color="primary" 
+                onClick={(() => {navigate('/locais', { replace: true })})} 
+              >
+                Confirmar
+              </Button>
+            </DialogActions>
+          </Dialog>
         <Box mt={3}>
           <Register 
             local={local}

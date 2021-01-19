@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   Box,
+  Button,
   Container,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
@@ -33,6 +39,7 @@ const TipoLocalRegister = () => {
   const [vazio, setVazio] = useState(true);
   const [disabled, setDisabled] = React.useState(false);
   const [botao, setBotao] = useState('');
+  const [open, setOpen] = React.useState(false);
   const TOKEN = localStorage.getItem("@DataVie-Token");
   
    useEffect(() => {
@@ -118,6 +125,19 @@ const TipoLocalRegister = () => {
     }
   };
 
+  const handleClose = () => { setOpen(false); };
+
+  function verificarAtt(){
+
+    if(descricao || farmacia){
+      setOpen(true);
+
+    }else{
+      navigate('/tipolocal', { replace: true }); 
+
+    }
+  }
+
   return (
     <Page
       className={classes.root}
@@ -129,7 +149,36 @@ const TipoLocalRegister = () => {
           atualizarTipoLocal={atualizarTipoLocal}
           id={id}
           botao={botao}
+          verificarAtt={verificarAtt}
         />
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{`Deseja cancelar operação?`}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Após a confirmação esse processo não poderá ser desfeito.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button 
+                color="primary"
+                onClick={handleClose} 
+              >
+                Voltar
+              </Button>
+              <Button 
+                autoFocus
+                color="primary" 
+                onClick={(() => {navigate('/tipolocal', { replace: true })})} 
+              >
+                Confirmar
+              </Button>
+            </DialogActions>
+          </Dialog>
         <Box mt={3}>
           <Register 
             tipo={tipo}
