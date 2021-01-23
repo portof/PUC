@@ -1,11 +1,11 @@
 {
     "banco": {
         "dialect": "postgres",
-        "port": "5432",
-        "host": "45.132.241.129",
+        "port": "6847",
+        "host": "177.43.236.178",
         "schema": "public",
-        "database": "DataVie_Flavio",
-        "username": "postgres",
-        "password": "bravilpostgres1877" 
+        "database": "datavie",
+        "username": "datavie",
+        "password": "portof7" 
     }
 }
