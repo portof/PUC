@@ -68,7 +68,7 @@ const Register = ( props ) => {
 
   const [mascaraCep] = useState('99999-999');
   const [mascaraCNPJ] = useState('99.999.999/9999-99');
-  const [mascaraTelefone, setMascaraTelefone] = useState('(99) 99999-9999');
+  const [mascaraTelefone] = useState('(99) 9999-9999');
 
   const estados = [
     {"nome": "Acre", "sigla": "AC"},
@@ -161,7 +161,6 @@ const Register = ( props ) => {
         local.telefone = value;
         setLocal(local);
         setTelefone(value);
-        value.substr(2,1) === 9 ? setMascaraTelefone('(99) 99999-9999') : setMascaraTelefone('(99) 9999-9999');
         break;
       case 12:
         local.id_tipo_local = value;
@@ -200,7 +199,7 @@ const Register = ( props ) => {
       }
     }
     catch (e) {
-      NotificationManager.error('Favor verificar CEP.', 'Algo deu errado!', 4000);
+      NotificationManager.error('Erro interno!', 'Algo deu errado!', 4000);
       setVazio(cep);
       return e;
     }
@@ -565,7 +564,7 @@ const Register = ( props ) => {
 
 Register.propTypes = {
   className: PropTypes.string,
-  local: PropTypes.object.isRequired
+  local: PropTypes.object.isRequired,
 };
 
 export default Register;

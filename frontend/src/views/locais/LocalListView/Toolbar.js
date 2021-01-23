@@ -54,7 +54,7 @@ const Toolbar = ( props ) => {
       } 
     }
     catch (e) {  
-        NotificationManager.error('Favor cadastrar um tipo de local.', 'Algo deu errado!', 4000)
+        NotificationManager.error('Erro interno!', 'Algo deu errado!', 4000)
     }
   }
 

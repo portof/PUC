@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LocaisRegister = () => {
-  const [local, setLocal] = useState([]);
+  const [local, setLocal] = useState({});
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -86,7 +86,7 @@ const LocaisRegister = () => {
   
 
   async function cadastrarLocal(){
-
+    
     try{
       const response = await api.post('/local', local, {
         headers: {
